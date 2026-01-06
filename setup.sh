@@ -1,51 +1,34 @@
 #!/bin/bash
+set -e
 
-# Script d'installation de l'environnement Python pour Statistical-Learning
+# Installer pyenv si absent
+if ! command -v pyenv >/dev/null 2>&1; then
+    brew install pyenv
+fi
 
-echo "🔧 Configuration de l'environnement Python..."
-
-# Initialiser pyenv dans cette session
+# Initialiser pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# Vérifier si pyenv est installé
-if ! command -v pyenv &> /dev/null; then
-    echo "⚠️  pyenv n'est pas installé. Installation..."
-    brew install pyenv
-    
-    # Ajouter pyenv au shell
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-fi
+# Version Python stable pour ML
+PYTHON_VERSION=3.13.5
 
-# Installer Python 3.13.5
-echo "📦 Installation de Python 3.13.5..."
-pyenv install -s 3.13.5
+# Installer et activer Python
+pyenv install -s $PYTHON_VERSION
+pyenv local $PYTHON_VERSION
 
-# Activer la version pour ce projet
-pyenv local 3.13.5
-
-# Recharger pyenv pour utiliser la bonne version
-eval "$(pyenv init -)"
-
-# Créer un environnement virtuel
-echo "🌐 Création de l'environnement virtuel..."
+# Créer l'environnement virtuel
 python -m venv venv
 
-# Activer l'environnement virtuel
+# Activer l'environnement
 source venv/bin/activate
 
-# Mettre à jour pip
-echo "⬆️  Mise à jour de pip..."
+# Mettre pip à jour
 pip install --upgrade pip
 
 # Installer les dépendances
-echo "📚 Installation des packages..."
 pip install -r requirements.txt
 
-echo "✅ Installation terminée!"
-echo ""
-echo "Pour activer l'environnement:"
-echo "  source venv/bin/activate"
+echo "Installation terminée."
+echo "Activer l'environnement avec : source venv/bin/activate"
