@@ -4,7 +4,7 @@
 
 Ce projet s'inscrit dans le cadre du **QRT Data Challenge 2023**. L'objectif est de développer un modèle prédictif pour expliquer les mouvements de variations des prix de l'électricité en Allemagne et en France.
 
-## 👥 Auteurs
+## Auteurs
 
 - **Tania Admane**
 - **Lola Chardigny**
