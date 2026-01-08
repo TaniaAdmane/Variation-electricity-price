@@ -2,7 +2,7 @@
 
 ## Contexte
 
-Ce projet s'inscrit dans le cadre du **QRT Data Challenge 2023**. L'objectif est de développer un modèle prédictif pour expliquer les mouvements de variations des prix de l'électricité en Allemagne et en France.
+L'objectif de ce projet est de développer un modèle prédictif pour expliquer les mouvements de variations des prix de l'électricité en Allemagne et en France.
 
 ## Auteurs
 
@@ -30,3 +30,5 @@ Nous avons testé et comparé **5 approches différentes** :
 ## Résultats
 
 Les performances des modèles sont évaluées avec la corrélation de Spearman et la MAE (Mean Absolute Error) sur les ensembles de validation.
+
+Les données proviennent du data challenge 2023 organisé par QRT : https://challengedata.ens.fr/participants/challenges/97/
